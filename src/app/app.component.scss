@@ -213,6 +213,17 @@ h1 {
   }
 }
 
+.copyright {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  color: rgba(138, 31, 76, 0.6);
+  z-index: 10;
+  text-align: center;
+}
+
 @media (max-width: 480px) {
   .card {
     padding: 28px 22px 24px;
@@ -220,5 +231,10 @@ h1 {
 
   .actions {
     flex-direction: column;
+  }
+
+  .copyright {
+    font-size: 0.7rem;
+    bottom: 12px;
   }
 }
