@@ -1,50 +1,19 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent {
   title = 'will-you-be-my-valentine';
   answeredYes = false;
   noHoverCount = 0;
   noPosition = { x: 0, y: 0 };
-
-  targetDate = new Date('2026-02-14T00:00:00');
   isUnlocked = false;
-  countdown = { days: 0, hours: 0, minutes: 0, seconds: 0 };
-  private intervalId: any;
 
-  ngOnInit(): void {
-    this.updateCountdown();
-    this.intervalId = setInterval(() => this.updateCountdown(), 1000);
-  }
-
-  ngOnDestroy(): void {
-    if (this.intervalId) {
-      clearInterval(this.intervalId);
-    }
-  }
-
-  private updateCountdown(): void {
-    const now = new Date();
-    const diff = this.targetDate.getTime() - now.getTime();
-
-    if (diff <= 0) {
-      this.isUnlocked = true;
-      if (this.intervalId) {
-        clearInterval(this.intervalId);
-      }
-      return;
-    }
-
-    this.countdown = {
-      days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-      hours: Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-      minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
-      seconds: Math.floor((diff % (1000 * 60)) / 1000),
-    };
+  onUnlocked(): void {
+    this.isUnlocked = true;
   }
 
   get headline(): string {

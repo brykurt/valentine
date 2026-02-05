@@ -8,8 +8,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
+import { CountdownOverlayComponent } from './countdown-overlay/countdown-overlay.component';
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, CountdownOverlayComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
