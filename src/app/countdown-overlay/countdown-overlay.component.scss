@@ -7,6 +7,42 @@
   position: fixed;
   inset: 0;
   z-index: 100;
+  overflow: hidden;
+}
+
+.floating-hearts {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floating-heart {
+  position: absolute;
+  bottom: -50px;
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  opacity: 0.6;
+  animation: floatUp linear infinite;
+  filter: drop-shadow(0 2px 4px rgba(255, 92, 138, 0.3));
+}
+
+@keyframes floatUp {
+  0% {
+    bottom: -50px;
+    opacity: 0;
+    transform: translateX(0) rotate(0deg);
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.4;
+  }
+  100% {
+    bottom: 110%;
+    opacity: 0;
+    transform: translateX(20px) rotate(15deg);
+  }
 }
 
 .countdown-card {
@@ -19,6 +55,7 @@
   box-shadow: 0 28px 70px rgba(240, 76, 132, 0.3);
   position: relative;
   overflow: hidden;
+  z-index: 2;
 }
 
 .countdown-card::before {

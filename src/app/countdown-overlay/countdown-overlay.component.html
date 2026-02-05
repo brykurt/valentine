@@ -1,4 +1,16 @@
 <div class="countdown-overlay">
+  <div class="floating-hearts">
+    <div
+      *ngFor="let heart of hearts; let i = index"
+      class="floating-heart"
+      [style.left.%]="(i * 8.3) % 100"
+      [style.animation-delay.s]="i * 0.5"
+      [style.animation-duration.s]="8 + (i % 3) * 2"
+    >
+      💖
+    </div>
+  </div>
+
   <div class="countdown-card">
     <div class="lock-icon">🔒</div>
     <h1 class="countdown-title">Something Special is Coming...</h1>
