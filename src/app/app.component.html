@@ -1,5 +1,39 @@
 <main class="page">
-  <div class="card" [class.card--yes]="answeredYes">
+  <!-- Countdown Overlay -->
+  <div class="countdown-overlay" *ngIf="!isUnlocked">
+    <div class="countdown-card">
+      <div class="lock-icon">🔒</div>
+      <h1 class="countdown-title">Something Special is Coming...</h1>
+      <p class="countdown-subtitle">Valentine's Day 2026</p>
+      
+      <div class="countdown-timer">
+        <div class="time-block">
+          <div class="time-value">{{ countdown.days }}</div>
+          <div class="time-label">Days</div>
+        </div>
+        <div class="time-separator">:</div>
+        <div class="time-block">
+          <div class="time-value">{{ countdown.hours }}</div>
+          <div class="time-label">Hours</div>
+        </div>
+        <div class="time-separator">:</div>
+        <div class="time-block">
+          <div class="time-value">{{ countdown.minutes }}</div>
+          <div class="time-label">Minutes</div>
+        </div>
+        <div class="time-separator">:</div>
+        <div class="time-block">
+          <div class="time-value">{{ countdown.seconds }}</div>
+          <div class="time-label">Seconds</div>
+        </div>
+      </div>
+      
+      <p class="countdown-message">A question that can only be answered on the day of love 💘</p>
+    </div>
+  </div>
+
+  <!-- Main Valentine Content -->
+  <div class="card" [class.card--yes]="answeredYes" *ngIf="isUnlocked">
     <div class="badge">💘 February 14</div>
     <h1>{{ headline }}</h1>
     <p class="subtext">{{ subtext }}</p>
