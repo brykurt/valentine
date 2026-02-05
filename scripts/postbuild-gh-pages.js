@@ -4,7 +4,7 @@ const path = require("path");
 const outputArg = process.argv[2];
 const outputDir = outputArg
   ? path.resolve(process.cwd(), outputArg)
-  : path.join(__dirname, "..", "dist", "will-you-be-my-valentine");
+  : path.join(__dirname, "..", "docs");
 const indexPath = path.join(outputDir, "index.html");
 const notFoundPath = path.join(outputDir, "404.html");
 const noJekyllPath = path.join(outputDir, ".nojekyll");

@@ -5,8 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:gh-pages": "ng build --configuration github-pages && node scripts/postbuild-gh-pages.js dist/will-you-be-my-valentine",
-    "deploy": "npm run build:gh-pages && git add dist/will-you-be-my-valentine && git commit -m \"Deploy to GitHub Pages\" && git push",
+    "build:gh-pages": "ng build --configuration github-pages && node scripts/postbuild-gh-pages.js docs",
+    "deploy": "npm run build:gh-pages && git add docs && git commit -m \"Deploy to GitHub Pages\" && git push",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

@@ -47,8 +47,8 @@
               "outputHashing": "all"
             },
             "github-pages": {
-              "outputPath": "dist/will-you-be-my-valentine",
-              "baseHref": "/will-you-be-my-valentine/",
+              "outputPath": "docs",
+              "baseHref": "/valentine/",
               "budgets": [
                 {
                   "type": "initial",
