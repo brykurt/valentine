@@ -1,16 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy {
   title = 'will-you-be-my-valentine';
   answeredYes = false;
   noHoverCount = 0;
   noPosition = { x: 0, y: 0 };
   isUnlocked = false;
+  hearts: number[] = [];
+  private intervalId: any;
+
+  ngOnInit(): void {
+    this.updateHearts();
+    this.intervalId = setInterval(() => this.updateHearts(), 60000); // Update every minute
+  }
+
+  ngOnDestroy(): void {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
+  }
 
   onUnlocked(): void {
     this.isUnlocked = true;
@@ -68,5 +81,24 @@ export class AppComponent {
 
   onNoClick(): void {
     this.onNoHover();
+  }
+
+  private updateHearts(): void {
+    const targetDate = new Date('2026-02-14T00:00:00');
+    const startDate = new Date('2026-02-01T00:00:00');
+    const now = new Date();
+
+    const totalTime = targetDate.getTime() - startDate.getTime();
+    const timeRemaining = targetDate.getTime() - now.getTime();
+    const elapsed = totalTime - timeRemaining;
+    const progress = Math.max(0, Math.min(1, elapsed / totalTime));
+
+    // Gradually increase hearts from 3 to 12 as we approach Valentine's Day
+    let heartCount = Math.floor(3 + progress * 9);
+    heartCount = Math.min(12, Math.max(3, heartCount));
+
+    this.hearts = Array(heartCount)
+      .fill(0)
+      .map((_, i) => i);
   }
 }

@@ -5,6 +5,19 @@
     (unlocked)="onUnlocked()"
   ></app-countdown-overlay>
 
+  <!-- Floating Hearts -->
+  <div class="floating-hearts" *ngIf="isUnlocked">
+    <div
+      *ngFor="let heart of hearts; let i = index"
+      class="floating-heart"
+      [style.left.%]="(i * 8.3) % 100"
+      [style.animation-delay.s]="i * 0.5"
+      [style.animation-duration.s]="8 + (i % 3) * 2"
+    >
+      💖
+    </div>
+  </div>
+
   <!-- Main Valentine Content -->
   <div class="card" [class.card--yes]="answeredYes" *ngIf="isUnlocked">
     <div class="badge">💘 February 14</div>
