@@ -47,7 +47,7 @@
               "outputHashing": "all"
             },
             "github-pages": {
-              "outputPath": "docs",
+              "outputPath": "dist",
               "baseHref": "/valentine/",
               "budgets": [
                 {

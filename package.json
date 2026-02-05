@@ -5,8 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:gh-pages": "ng build --configuration github-pages && node scripts/postbuild-gh-pages.js docs",
-    "deploy": "npm run build:gh-pages && git add docs && git commit -m \"Deploy to GitHub Pages\" && git push",
+    "build:gh-pages": "ng build --configuration github-pages && node scripts/postbuild-gh-pages.js dist",
+    "deploy": "npm run build:gh-pages && node scripts/deploy-gh-pages.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
