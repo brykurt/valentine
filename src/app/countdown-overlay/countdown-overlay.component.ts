@@ -5,6 +5,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-countdown-overlay',
@@ -14,12 +15,21 @@ import {
 export class CountdownOverlayComponent implements OnInit, OnDestroy {
   @Output() unlocked = new EventEmitter<void>();
 
+  // Automatically false in production builds
+  private DEV_MODE = environment.devMode;
+
   targetDate = new Date('2026-02-14T00:00:00');
   countdown = { days: 0, hours: 0, minutes: 0, seconds: 0 };
   private intervalId: any;
   hearts: number[] = [];
 
   ngOnInit(): void {
+    // Skip countdown in dev mode
+    if (this.DEV_MODE) {
+      this.unlocked.emit();
+      return;
+    }
+
     this.updateCountdown();
     this.intervalId = setInterval(() => this.updateCountdown(), 1000);
   }
@@ -53,7 +63,8 @@ export class CountdownOverlayComponent implements OnInit, OnDestroy {
   }
 
   private updateHearts(timeRemaining: number): void {
-    const totalTime = this.targetDate.getTime() - new Date('2026-02-01T00:00:00').getTime();
+    const totalTime =
+      this.targetDate.getTime() - new Date('2026-02-01T00:00:00').getTime();
     const elapsed = totalTime - timeRemaining;
     const progress = elapsed / totalTime;
 
@@ -61,6 +72,8 @@ export class CountdownOverlayComponent implements OnInit, OnDestroy {
     let heartCount = Math.floor(3 + progress * 9);
     heartCount = Math.min(12, Math.max(3, heartCount));
 
-    this.hearts = Array(heartCount).fill(0).map((_, i) => i);
+    this.hearts = Array(heartCount)
+      .fill(0)
+      .map((_, i) => i);
   }
 }
