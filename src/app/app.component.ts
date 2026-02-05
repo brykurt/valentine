@@ -1,4 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { YesDialogComponent } from './yes-dialog/yes-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +15,8 @@ export class AppComponent implements OnInit, OnDestroy {
   isUnlocked = false;
   hearts: number[] = [];
   private intervalId: any;
+
+  constructor(private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.updateHearts();
@@ -63,6 +67,14 @@ export class AppComponent implements OnInit, OnDestroy {
 
   onYesClick(): void {
     this.answeredYes = true;
+
+    // Open the dialog with photos
+    this.dialog.open(YesDialogComponent, {
+      width: '90vw',
+      maxWidth: '700px',
+      panelClass: 'yes-dialog',
+      autoFocus: false,
+    });
   }
 
   onNoHover(): void {
@@ -72,8 +84,10 @@ export class AppComponent implements OnInit, OnDestroy {
 
     this.noHoverCount += 1;
 
-    const maxX = 220;
-    const maxY = 140;
+    // Keep button within visible bounds while dodging
+    // Card width is ~520px, button is ~110px wide, actions has 16px gap
+    const maxX = 150; // Reduced to keep within card bounds
+    const maxY = 80; // Reduced to keep within actions area
     const randomX = Math.floor(Math.random() * (maxX * 2 + 1)) - maxX;
     const randomY = Math.floor(Math.random() * (maxY * 2 + 1)) - maxY;
     this.noPosition = { x: randomX, y: randomY };

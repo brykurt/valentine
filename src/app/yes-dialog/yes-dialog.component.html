@@ -1,0 +1,21 @@
+<div class="dialog-container">
+  <button class="close-btn" mat-icon-button (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+
+  <div class="dialog-header">
+    <h2>Our Special Moments 💕</h2>
+    <p>Together, we create the best memories</p>
+  </div>
+
+  <div class="photo-grid">
+    <div class="photo-card" *ngFor="let image of images">
+      <img [src]="image" alt="Our memories" />
+    </div>
+  </div>
+
+  <div class="dialog-footer">
+    <p class="love-message">I love you babe! 💖</p>
+    <button mat-raised-button color="primary" (click)="close()">Close</button>
+  </div>
+</div>

@@ -8,9 +8,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
 import { CountdownOverlayComponent } from './countdown-overlay/countdown-overlay.component';
+import { YesDialogComponent } from './yes-dialog/yes-dialog.component';
+
 @NgModule({
-  declarations: [AppComponent, CountdownOverlayComponent],
+  declarations: [AppComponent, CountdownOverlayComponent, YesDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -19,6 +22,7 @@ import { CountdownOverlayComponent } from './countdown-overlay/countdown-overlay
     MatSlideToggleModule,
     MatDividerModule,
     MatIconModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
