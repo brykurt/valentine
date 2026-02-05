@@ -1,5 +1,38 @@
-<div class="center-button">
-  <button mat-raised-button color="primary">
-    Click me! <mat-icon color="warn">favorite</mat-icon>
-  </button>
-</div>
+<main class="page">
+  <div class="card" [class.card--yes]="answeredYes">
+    <div class="badge">💘 February 14</div>
+    <h1>{{ headline }}</h1>
+    <p class="subtext">{{ subtext }}</p>
+
+    <div class="illustration" aria-hidden="true">
+      <div class="heart"></div>
+      <div class="sparkles">
+        <span>✨</span>
+        <span>✨</span>
+        <span>✨</span>
+      </div>
+    </div>
+
+    <div class="actions" *ngIf="!answeredYes">
+      <button class="btn btn-yes" type="button" (click)="onYesClick()">
+        Yes 💖
+      </button>
+      <button
+        class="btn btn-no"
+        type="button"
+        (mouseenter)="onNoHover()"
+        (click)="onNoClick()"
+        [style.transform]="
+          'translate(' + noPosition.x + 'px, ' + noPosition.y + 'px)'
+        "
+      >
+        No 🙃
+      </button>
+    </div>
+
+    <div class="yes-message" *ngIf="answeredYes">
+      <div class="confetti">🎉🎉🎉</div>
+      <p>Text me your favorite dessert 🍰</p>
+    </div>
+  </div>
+</main>

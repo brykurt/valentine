@@ -51,6 +51,24 @@
               ],
               "outputHashing": "all"
             },
+            "github-pages": {
+              "outputPath": "docs",
+              "baseHref": "/will-you-be-my-valentine/",
+              "deployUrl": "/will-you-be-my-valentine/",
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
             "development": {
               "buildOptimizer": false,
               "optimization": false,

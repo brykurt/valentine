@@ -3,23 +3,21 @@ body {
   height: 100%;
   margin: 0;
   min-height: 100vh;
+  font-family:
+    "Poppins",
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    sans-serif;
 }
 
 body {
-  background: url("assets/heart.jpg") no-repeat center center fixed;
-  background-size: cover;
-  opacity: 1;
+  background: linear-gradient(135deg, #ffe1ec 0%, #fff6f9 50%, #ffd1e3 100%);
+  color: #3a1d2f;
 }
 
-html,
-body {
-  height: 100%;
-  margin: 0;
-  min-height: 100vh;
-}
-
-body {
-  background: url("assets/heart.jpg") no-repeat center center fixed;
-  background-size: cover;
-  opacity: 1;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
