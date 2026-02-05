@@ -45,15 +45,19 @@ try {
   // Switch to gh-pages branch
   execSync('git checkout gh-pages', { stdio: 'inherit' });
 
-  // Remove all files except .git
+  // Remove all files except .git and node_modules
   const files = fs.readdirSync('.');
   files.forEach(file => {
-    if (file !== '.git' && file !== '.temp-gh-pages') {
+    if (file !== '.git' && file !== '.temp-gh-pages' && file !== 'node_modules') {
       const filePath = path.join('.', file);
-      if (fs.statSync(filePath).isDirectory()) {
-        fs.rmSync(filePath, { recursive: true, force: true });
-      } else {
-        fs.unlinkSync(filePath);
+      try {
+        if (fs.statSync(filePath).isDirectory()) {
+          fs.rmSync(filePath, { recursive: true, force: true, maxRetries: 3 });
+        } else {
+          fs.unlinkSync(filePath);
+        }
+      } catch (err) {
+        console.warn(`Warning: Could not delete ${filePath}:`, err.message);
       }
     }
   });
